@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="CarManager.Tests\CarManager.Tests.csproj" />
+    <None Include="CarManager\CarManager.csproj" />
+    <None Include="Database.Tests\Database.Tests.csproj" />
+    <None Include="DatabaseExtended.Tests\DatabaseExtended.Tests.csproj" />
+    <None Include="DatabaseExtended\DatabaseExtended.csproj" />
+    <None Include="Database\Database.csproj" />
+    <None Include="FightingArena.Tests\FightingArena.Tests.csproj" />
+    <None Include="FightingArena\FightingArena.csproj" />
+    <None Include="UnitTesting-Skeleton.sln" />
+  </ItemGroup>
+
+</Project>

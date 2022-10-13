@@ -14,9 +14,9 @@ namespace ValidationAttributes
 
             bool isValidEntity = Validator.IsValid(person);
 
-            Console.WriteLine(isValidEntity);
+            Console.WriteLine(Reflector.GetNumber(person));
 
-            // TODO Don't know what IsValid() does in attributes!
+            Console.WriteLine(isValidEntity);
         }
     }
 }

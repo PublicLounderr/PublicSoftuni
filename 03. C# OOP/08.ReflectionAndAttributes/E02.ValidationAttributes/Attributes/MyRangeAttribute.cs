@@ -14,15 +14,12 @@ namespace ValidationAttributes
             this.minValue = minValue;
             this.maxValue = maxValue;
         }
+
         public override bool IsValid(object obj)
         {
             IComparable objValue = obj as IComparable;
-            if (objValue.CompareTo(minValue) >= minValue && objValue.CompareTo(maxValue) <= maxValue)
-            {
-                return true;
-            }
 
-            return false;
+            return objValue.CompareTo(minValue) >= minValue && objValue.CompareTo(maxValue) <= maxValue;
         }
     }
 }
