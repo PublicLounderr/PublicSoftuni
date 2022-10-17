@@ -17,14 +17,14 @@ namespace DatabaseExtended.Tests
             });
         }
 
-        //[Test]
-        //public void CreatePersonWithNegativeId()
-        //{
-        //    Assert.That(() =>
-        //    {
-        //        Person p = new Person(-33, "Mark");
-        //    }, Throws.InvalidOperationException);
-        //}
+        [Test]
+        public void CreatePersonWithNegativeId()
+        {
+            Assert.That(() =>
+            {
+                Person p = new Person(-33, "Mark");
+            }, Throws.InvalidOperationException);
+        }
 
         [Test]
         public void Init()
@@ -44,7 +44,8 @@ namespace DatabaseExtended.Tests
                 people[i] = new Person(i, $"Mark{i}");
             }
 
-            Assert.That(() => {
+            Assert.That(() =>
+            {
                 Database db = new Database(people);
             }, Throws.ArgumentException);
         }
@@ -117,44 +118,68 @@ namespace DatabaseExtended.Tests
         public void RemoveNonExistant()
         {
             Database db = new Database();
-            
+
             Assert.That(() => { db.Remove(); }, Throws.InvalidOperationException);
         }
 
         [Test]
         public void FindByUsername()
         {
-
+            Person person = new Person(0, "Mark");
+            Database db = new Database(person);
+            Assert.AreEqual(person, db.FindByUsername("Mark"));
         }
 
         [Test]
         public void FindByNonExistantUsername()
         {
+            Database db = new Database();
 
+            Assert.That(() =>
+            {
+                db.FindByUsername("Mark");
+            }, Throws.InvalidOperationException);
         }
 
         [Test]
         public void FindByNullUsername()
         {
+            Database db = new Database();
 
+            Assert.That(() =>
+            {
+                db.FindByUsername(null);
+            }, Throws.ArgumentNullException);
         }
-        
+
         [Test]
         public void FindById()
         {
-
+            Person person = new Person(0, "Mark");
+            Database db = new Database(person);
+            Assert.AreEqual(person, db.FindById(0));
         }
 
         [Test]
         public void FindByNegativeId()
         {
+            Database db = new Database();
 
+            Assert.That(() =>
+            {
+                db.FindById(-5);
+            }, Throws.ArgumentException);
         }
 
         [Test]
         public void FindByNonExistantId()
         {
+            Database db = new Database();
 
+            Assert.That(() =>
+            {
+                db.FindById(99);
+            }, Throws.InvalidOperationException);
         }
     }
 }
